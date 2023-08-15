@@ -124,5 +124,8 @@
         }
       }
     }},
-  "defaultProject": "cotacao-dolar"
+  "defaultProject": "cotacao-dolar",
+  "cli": {
+    "analytics": "5f27d94c-65d3-46dd-9323-127d9456bc40"
+  }
 }
