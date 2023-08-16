@@ -1,22 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ConsultaComponentComponent } from './component/consulta-component/consulta-component/consulta-component.component';
 import { CotacaoComponentComponent } from './component/cotacao-component/cotacao-component/cotacao-component.component';
-import { MainPageComponent } from './components/main-page-component/main-page/main-page.component';
+import { MainPageComponent } from './component/main-page-component/main-page/main-page.component';
+import { ConsultaDolarService } from './service/consulta-dolar-service/consulta-dolar-service.service';
+import { DataExibicaoPipePipe } from './pipe/data-exibicao-pipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConsultaComponentComponent,
     CotacaoComponentComponent,
-    MainPageComponent
+    MainPageComponent,
+    DataExibicaoPipePipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ConsultaDolarService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
