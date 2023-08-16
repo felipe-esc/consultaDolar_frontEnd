@@ -1,1 +1,22 @@
-<p>consulta-component works!</p>
+<div>
+    <div>
+        <h5>Data:</h5>
+        <mat-form-field class="">
+            <mat-label>Escolha uma data</mat-label>
+            <input 
+                matInput 
+                [formControl]="currentDate" 
+                [min]="minDate" 
+                [max]="maxDate" 
+                [matDatepicker]="picker">
+            <mat-hint>MM/DD/AAAA</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker [startAt]="startDate"></mat-datepicker>
+          </mat-form-field>
+    </div>
+    <mat-button
+        (click)="novaConsulta()" 
+        mat-flat-button color="primary">
+        Consultar
+    </mat-button>
+</div>

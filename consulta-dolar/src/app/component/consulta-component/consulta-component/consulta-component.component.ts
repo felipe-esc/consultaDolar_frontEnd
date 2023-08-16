@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms'
 import { ConsultaDolarService } from 'src/app/service/consulta-dolar-service/consulta-dolar-service.service';
 
 @Component({
@@ -8,22 +9,41 @@ import { ConsultaDolarService } from 'src/app/service/consulta-dolar-service/con
 })
 export class ConsultaComponentComponent implements OnInit {
 
-  public dataCotacao: String;
+  public diaCotacao: String;
+  public mesCotacao: String;
+  public anoCotacao: String;
+  
+  public minDate: Date;
+  public maxDate: Date;
+  public startDate: Date;
 
   constructor(private dolarService: ConsultaDolarService) { }
 
+  public currentDate = new FormControl(new Date());
+
   ngOnInit(): void {
     let date = new Date();
-    let month = (date.getUTCMonth() + 1).toString();
-    let day = date.getUTCDate().toString();
-    let year = date.getFullYear().toString();
+    this.mesCotacao = (date.getUTCMonth() + 1).toString();
+    this.diaCotacao = date.getUTCDate().toString();
+    this.anoCotacao = date.getFullYear().toString();
 
-    this.dataCotacao = `'${this.formatNumber(month)}-${this.formatNumber(day)}-${year}'`
+    this.minDate = new Date(date.getFullYear() - 30, 0, 1);
+    this.maxDate = date;
+    this.startDate = date;
 
-    this.dolarService.consultaDolarDia(this.dataCotacao);
+    this.realizaConsulta();
   }
 
-  private formatNumber(num: String) {
-    return num.length === 1 ? '0' + num : num;
+  public novaConsulta() {
+    this.diaCotacao = this.currentDate.value.getUTCDate().toString();
+    this.mesCotacao = (this.currentDate.value.getUTCMonth() + 1).toString();
+    this.anoCotacao = this.currentDate.value.getFullYear().toString();
+
+    this.realizaConsulta();
   }
+
+  private realizaConsulta() {
+    this.dolarService.consultaDolarDia(this.diaCotacao, this.mesCotacao, this.anoCotacao);
+  }
+
 }
