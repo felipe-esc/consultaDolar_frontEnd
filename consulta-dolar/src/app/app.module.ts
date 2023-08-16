@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker'
@@ -34,6 +34,7 @@ import { DataExibicaoPipePipe } from './pipe/data-exibicao-pipe.pipe';
     MatFormFieldModule,
     MatNativeDateModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
     ConsultaDolarService
   ],
