@@ -7,6 +7,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { ConsultaComponentComponent } from './component/consulta-component/consulta-component/consulta-component.component';
@@ -32,7 +33,8 @@ import { DataExibicaoPipePipe } from './pipe/data-exibicao-pipe.pipe';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatIconModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
